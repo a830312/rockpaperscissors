@@ -7,11 +7,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:gumtreeuk/rockpaperscissors.git"
+    "url": "git+ssh://git@github.com/gumtreeuk/rockpaperscissors.git"
   },
   "scripts": {
     "test": "karma start karma.config.js --no-single-run",
-    "dev": "webpack-dev-server --content-base build/",
+    "dev": "next",
     "build": "webpack",
     "serve": "http-server -p 8000 build/",
     "lint": "eslint . --ext .js"
@@ -47,5 +47,20 @@
     "webpack-core": "^0.6.9",
     "webpack-dev-server": "^2.4.1"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/gumtreeuk/rockpaperscissors/issues"
+  },
+  "homepage": "https://github.com/gumtreeuk/rockpaperscissors#readme",
+  "main": "karma.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "next": "^4.1.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
 }
