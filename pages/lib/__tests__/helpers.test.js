@@ -2,6 +2,8 @@
 
 import { getRandomInt, getResult, validateWeapon } from '../helpers'
 import gameConfigs from '../../configs/gameConfigs'
+import resultConfigs from '../../configs/resultConfigs'
+
 const SCISSORS = 1,
       PAPER = 2,
       STONE = 3,
@@ -15,80 +17,6 @@ const SCISSORS = 1,
       WEAPONS = gameConfigs.weapons,
       RESULTS = gameConfigs.results
 
-const resultsConfig = [
-  {
-    p0: SCISSORS,
-    p1: PAPER,
-    result: {
-      player0: WIN,
-      player1: LOSS
-    }
-  },
-  {
-    p0: SCISSORS,
-    p1: SCISSORS,
-    result: {
-      player0: TIE,
-      player1: TIE
-    }
-  },
-  {
-    p0: SCISSORS,
-    p1: STONE,
-    result: {
-      player0: LOSS,
-      player1: WIN
-    }
-  },
-  {
-    p0: PAPER,
-    p1: PAPER,
-    result: {
-      player0: TIE,
-      player1: TIE
-    }
-  },
-  {
-    p0: PAPER,
-    p1: SCISSORS,
-    result: {
-      player0: LOSS,
-      player1: WIN
-    }
-  },
-  {
-    p0: PAPER,
-    p1: STONE,
-    result: {
-      player0: WIN,
-      player1: LOSS
-    }
-  },
-  {
-    p0: STONE,
-    p1: PAPER,
-    result: {
-      player0: LOSS,
-      player1: WIN
-    }
-  },
-  {
-    p0: STONE,
-    p1: SCISSORS,
-    result: {
-      player0: WIN,
-      player1: LOSS
-    }
-  },
-  {
-    p0: STONE,
-    p1: STONE,
-    result: {
-      player0: TIE,
-      player1: TIE
-    }
-  }
-]
 
 describe('getRandomInt', () => {
   describe('when the valid range is provided', () => {
@@ -132,7 +60,7 @@ describe('getResult', () => {
       expect(player1).toEqual(expectedResult.player1)  
     }
 
-    resultsConfig.forEach((currentCase, i) => {
+    resultConfigs.forEach((currentCase, i) => {
       it(`p0 choose ${WEAPONS[currentCase.p0]}, p1 choose ${WEAPONS[currentCase.p1]}, p0 ${RESULTS[currentCase.result.player0]} ,p1 ${RESULTS[currentCase.result.player1]}`, () => {
         verificateResult(currentCase.p0, currentCase.p1, currentCase.result)
       })
@@ -144,6 +72,7 @@ describe('getResult', () => {
           player1Weapon = '',
           result = getResult(player0Weapon, player1Weapon),
           { player0, player1 } = result
+
       expect(result).toHaveProperty(PLAYER0)
       expect(result).toHaveProperty(PLAYER1)
       expect(player0).toEqual('')

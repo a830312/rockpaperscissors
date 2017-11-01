@@ -1,5 +1,7 @@
 
 import gameConfigs from '../configs/gameConfigs'
+import resultConfigs from '../configs/resultConfigs'
+
 import { isNumber as _isNumber, get as _get } from 'lodash'
 
 const { weapons } = gameConfigs
@@ -17,10 +19,16 @@ const WIN = 1,
  * @return {Boolean} 
  * 
  */
+
 export function validateWeapon (weaponId, weaponsConfigs = weapons) {
   let weaponName = _get(weaponsConfigs, weaponId, ''),
       isValidWeapon = weaponName ? true : false
   return isValidWeapon
+}
+
+export function paperSissorStone (p0, p1) {
+  let metch = resultConfigs.filter((result) => (result.p0 === p0) && (result.p1 === p1))
+  return metch[0].result
 }
 
 /**
@@ -39,6 +47,7 @@ export function validateWeapon (weaponId, weaponsConfigs = weapons) {
  * 0 => loose, 1 => win, 2 => tie
  */
 export function getResult (player0Weapon, player1Weapon, weaponsConfigs = weapons) {
+
   if (!_isNumber(player0Weapon) || !_isNumber(player1Weapon) 
     || !validateWeapon(player0Weapon, weaponsConfigs)
     || !validateWeapon(player1Weapon, weaponsConfigs))
@@ -46,6 +55,10 @@ export function getResult (player0Weapon, player1Weapon, weaponsConfigs = weapon
       player0: '',
       player1: ''
     }
+
+  if (weaponsConfigs === weapons)
+    return paperSissorStone(player0Weapon, player1Weapon)
+
   let diff = player0Weapon - player1Weapon,
       isPlayer1Wins = false,
       isPlayer0Wins = false,
