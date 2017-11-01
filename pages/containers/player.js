@@ -43,7 +43,10 @@ class Player extends Component {
         {
           weapons.map((w, i) => w ? (
             <li key={`w-${i}`} className="options__option weapons__options">
-              <button value={i}  className="btn options__option-btn" onClick={this._handleWeaponClicked}>{ w }</button>
+              <button value={i}
+                disabled={isNPC}
+                className="btn options__option-btn"
+                onClick={this._handleWeaponClicked}>{ w }</button>
             </li>
           ) : false)
         }

@@ -26,7 +26,7 @@ export function validateWeapon (weaponId, weaponsConfigs = weapons) {
   return isValidWeapon
 }
 
-export function paperSissorStone (p0, p1) {
+function paperSissorStone (p0, p1) {
   let metch = resultConfigs.filter((result) => (result.p0 === p0) && (result.p1 === p1))
   return metch[0].result
 }

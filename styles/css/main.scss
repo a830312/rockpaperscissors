@@ -1,6 +1,4 @@
-$line-height: 1.2rem;
-$black: #2d2d2d;
-$gray: #eee;
+@import 'variables';
 
 body {
   font-family: "Arial";
@@ -38,6 +36,11 @@ a:hover {
   background-color: transparent;
   border: 1px solid $black;
   cursor: pointer;
+  &:disabled {
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+  }
 }
 
 .container {
