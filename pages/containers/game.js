@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Player from '../containers/player'
+import Player from './player'
 import gameConfigs from '../configs/gameConfigs'
 import { connect } from 'react-redux'
 
@@ -40,4 +40,5 @@ const mapStateToProps = ({ gameType, player0, player1 }) => {
   }
 }
 
+export { Game }
 export default connect(mapStateToProps, null)(Game)

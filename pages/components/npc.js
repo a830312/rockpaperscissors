@@ -9,7 +9,7 @@ class NPC extends Component {
         resultName = _get(result, 'name', ''),
         displayWeaponName = (resultName && weaponName) ? weaponName.toUpperCase() : '{weapon}',
         displayResultName = resultName.toUpperCase() || '{{win / loss}}',
-        displayNum = num + 1
+        displayNum = num >= 0 ? (num + 1) : ''
 
     return (
       <p>
@@ -24,5 +24,4 @@ NPC.propTypes = {
   result: PropTypes.object,
   num: PropTypes.number
 }
-
 export default NPC

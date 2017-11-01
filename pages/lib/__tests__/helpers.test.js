@@ -15,36 +15,6 @@ const SCISSORS = 1,
       WEAPONS = gameConfigs.weapons,
       RESULTS = gameConfigs.results
 
-describe('getRandomInt', () => {
-  describe('when the valid range is provided', () => {
-    it('should return correct number', () => {
-      let min = 1,
-          max = 3,
-          randomNumber = getRandomInt(min, max)
-      expect(randomNumber).toBeGreaterThanOrEqual(min)
-      expect(randomNumber).toBeLessThanOrEqual(max)
-    })
-  })
-  describe('when range is not provided', () => {
-    it('should return 0', () => {
-      let min = '',
-          max = '',
-          randomNumber = getRandomInt(min, max)
-      expect(randomNumber).toEqual(0)
-      expect(randomNumber).toEqual(0)
-    })
-  })
-  describe('when invalid range is provided', () => {
-    it('should return 0', () => {
-      let min = 4,
-          max = 1,
-          randomNumber = getRandomInt(min, max)
-      expect(randomNumber).toEqual(0)
-      expect(randomNumber).toEqual(0)
-    })
-  })
-})
-
 const resultsConfig = [
   {
     p0: SCISSORS,
@@ -119,6 +89,37 @@ const resultsConfig = [
     }
   }
 ]
+
+describe('getRandomInt', () => {
+  describe('when the valid range is provided', () => {
+    it('should return correct number', () => {
+      let min = 1,
+          max = 3,
+          randomNumber = getRandomInt(min, max)
+      expect(randomNumber).toBeGreaterThanOrEqual(min)
+      expect(randomNumber).toBeLessThanOrEqual(max)
+    })
+  })
+  describe('when range is not provided', () => {
+    it('should return 0', () => {
+      let min = '',
+          max = '',
+          randomNumber = getRandomInt(min, max)
+      expect(randomNumber).toEqual(0)
+      expect(randomNumber).toEqual(0)
+    })
+  })
+  describe('when invalid range is provided', () => {
+    it('should return 0', () => {
+      let min = 4,
+          max = 1,
+          randomNumber = getRandomInt(min, max)
+      expect(randomNumber).toEqual(0)
+      expect(randomNumber).toEqual(0)
+    })
+  })
+})
+
 
 describe('getResult', () => {
   describe('when valid weapons are provided', () => {

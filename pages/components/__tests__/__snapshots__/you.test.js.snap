@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`with snapshot testing matches the snapshot 1`] = `
+<p>
+  YOU choose 
+  <strong>
+    {weapon}
+  </strong>
+   and 
+  <strong>
+    {win / loss}
+  </strong>
+</p>
+`;

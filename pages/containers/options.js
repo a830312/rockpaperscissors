@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import gameConfigs from '../configs/gameConfigs'
-import { get as _get } from 'lodash'
+import { get as _get, isFunction as _isFunction } from 'lodash'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { updateGameType, resetGameType } from '../actions/game'
@@ -24,10 +24,11 @@ class Options extends Component {
 
     gameType = parseInt(gameType, 10)
 
-    if (gameType === restart)
+    if (gameType === restart && _isFunction(resetGameType))
       resetGameType(gameType)
 
-    updateGameType(gameType)
+    if (_isFunction(updateGameType))
+      updateGameType(gameType)
   }
 
   _generateGameTypes(gameTypes = []) {
@@ -51,7 +52,7 @@ class Options extends Component {
       <div>
         <p>Rock–paper–scissors</p>
         { hasTypeChoosen ? false : <ul className="options">{ this._generateGameTypes(gameTypes) }</ul> }
-        { hasTypeChoosen ? <ul>{ this._generateGameTypes(restartType) }</ul> : false }
+        { hasTypeChoosen ? <ul className="restart">{ this._generateGameTypes(restartType) }</ul> : false }
       </div>
     )
   }
@@ -76,4 +77,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
+export { Options }
 export default connect(mapStateToProps, mapDispatchToProps)(Options)

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import You from '../containers/you'
-import NPC from '../containers/npc'
+import You from '../components/you'
+import NPC from '../components/npc'
 import gameConfigs from '../configs/gameConfigs'
 import { updatePlayerWeapon } from '../actions/game'
 import { get as _get } from 'lodash'
@@ -38,7 +38,7 @@ class Player extends Component {
         wording = isNPC ? 'NPC has got a weapon' : 'Please Choose a weapon'
     return (
       <div>
-        <p>{ wording }</p>
+        <p className="wording">{ wording }</p>
         <ul className="options">
         {
           weapons.map((w, i) => w ? (
@@ -48,7 +48,7 @@ class Player extends Component {
           ) : false)
         }
         </ul>
-        { isNPC ? <NPC {...this.props} /> : <You {...this.props} /> }
+        <div className="player">{ isNPC ? <NPC {...this.props} /> : <You {...this.props} /> }</div>
       </div>
     )
   }
@@ -66,4 +66,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
+export { Player }
 export default connect(null, mapDispatchToProps)(Player)
