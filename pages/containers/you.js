@@ -19,7 +19,8 @@ class You extends Component {
 }
 
 You.propTypes = {
-  
+  weapon: PropTypes.object,
+  result: PropTypes.object
 }
 
 export default You

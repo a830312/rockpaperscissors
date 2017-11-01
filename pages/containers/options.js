@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import gameConfigs from '../configs/gameConfigs'
 import { get as _get } from 'lodash'
 import { bindActionCreators } from 'redux'
@@ -56,8 +57,13 @@ class Options extends Component {
   }
 }
 
+Options.propTypes = {
+  gameType: PropTypes.number,
+  resetGameType: PropTypes.func.isRequired,
+  updateGameType: PropTypes.func.isRequired
+}
+
 const mapStateToProps = (state) => {
-  // console.log('state', state)
   return {
     gameType: state.gameType
   }

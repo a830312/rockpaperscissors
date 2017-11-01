@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Player from '../containers/player'
-import { getResult, getRandomInt } from '../lib/helpers'
 import gameConfigs from '../configs/gameConfigs'
-import { get as _get } from 'lodash'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 const { weapons } = gameConfigs
-
 
 class Game extends Component {
 
@@ -30,6 +26,12 @@ class Game extends Component {
   }
 }
 
+Game.propTypes = {
+  gameType: PropTypes.number,
+  player0: PropTypes.object,
+  player1: PropTypes.object
+}
+
 const mapStateToProps = ({ gameType, player0, player1 }) => {
   return {
     gameType,
@@ -37,7 +39,5 @@ const mapStateToProps = ({ gameType, player0, player1 }) => {
     player1
   }
 }
-
-
 
 export default connect(mapStateToProps, null)(Game)

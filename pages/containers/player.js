@@ -54,6 +54,12 @@ class Player extends Component {
   }
 }
 
+Player.propTypes = {
+  updatePlayerWeapon: PropTypes.func.isRequired,
+  player: PropTypes.object,
+  num: PropTypes.number
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     updatePlayerWeapon: bindActionCreators(updatePlayerWeapon, dispatch)

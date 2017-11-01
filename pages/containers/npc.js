@@ -19,4 +19,10 @@ class NPC extends Component {
   }
 }
 
+NPC.propTypes = {
+  weapon: PropTypes.object,
+  result: PropTypes.object,
+  num: PropTypes.number
+}
+
 export default NPC

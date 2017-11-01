@@ -46,18 +46,22 @@ export function getResult (player0Weapon, player1Weapon, weaponsConfigs = weapon
       player0: '',
       player1: ''
     }
-  let diff = Math.abs(player0Weapon - player1Weapon),
+  let diff = player0Weapon - player1Weapon,
       isPlayer1Wins = false,
-      isPlayer0Wins = false
+      isPlayer0Wins = false,
+      victor = '',
+      weaponsNumber = weaponsConfigs.length - 1
 
   if (diff === 0)
     return {
       player0: TIE,
       player1: TIE
     }
+  
+  victor = (Math.abs(diff) % weaponsNumber === 1) ? 'player1' : 'player0'
 
-  isPlayer1Wins = (diff % 2 === 0) ? true : false
-  isPlayer0Wins = !isPlayer1Wins
+  isPlayer0Wins = victor === 'player1'
+  isPlayer1Wins = !isPlayer0Wins
 
 
   return {
