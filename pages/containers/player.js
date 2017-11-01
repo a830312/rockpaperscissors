@@ -36,9 +36,15 @@ class Player extends Component {
         playerId = _get(player, 'id', '')
     return (
       <div>
-        <p>Please Choose a weapon:</p>
+        <p>Please Choose a weapon</p>
         <ul>
-        { weapons.map((w, i) => w ? (<li key={`w-${i}`}><button value={i} onClick={this._handleWeaponClicked}>{ w }</button></li>) : false) }
+        {
+          weapons.map((w, i) => w ? (
+            <li key={`w-${i}`}>
+              <button value={i}  className="btn" onClick={this._handleWeaponClicked}>{ w }</button>
+            </li>
+          ) : false)
+        }
         </ul>
         { playerId ? <You {...this.props} /> : <NPC {...this.props} /> }
       </div>

@@ -6,12 +6,14 @@ class You extends Component {
   render() {
     let { weapon, result } = this.props,
         weaponName = _get(weapon, 'name', ''),
-        resultName = _get(result, 'name', '')
+        resultName = _get(result, 'name', ''),
+        displayWeaponName = weaponName || '{weapon}',
+        displayResultName = resultName || '{win / loss}'
 
     return (
-      <div>
-        {`You choose ${weaponName || '{weapon}'} and ${resultName || '{win / loss}'}`}
-      </div>
+      <p>
+        You choose <strong>{displayWeaponName}</strong> and <strong>{displayResultName}</strong>
+      </p>
     )
   }
 }

@@ -33,7 +33,7 @@ class Options extends Component {
     let typeConfigs = _get(gameConfigs, 'types', [])
     return gameTypes.map((gameType, i) => (
       <li key={`game-type-${i}`}>
-        <button value={gameType} onClick={this._handleTypeBtnClicked}>
+        <button className="btn" value={gameType} onClick={this._handleTypeBtnClicked}>
           { _get(typeConfigs, gameType, '') }
         </button>
       </li>
@@ -49,7 +49,7 @@ class Options extends Component {
     return (
       <div>
         <p>Rock–paper–scissors</p>
-        <ul>{ this._generateGameTypes(gameTypes) }</ul>
+        { hasTypeChoosen ? false : <ul>{ this._generateGameTypes(gameTypes) }</ul> }
         { hasTypeChoosen ? <ul>{ this._generateGameTypes(restartType) }</ul> : false }
       </div>
     )

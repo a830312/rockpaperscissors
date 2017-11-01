@@ -6,18 +6,16 @@ class NPC extends Component {
   render() {
     let { weapon, result, num } = this.props,
         weaponName = _get(weapon, 'name', ''),
-        resultName = _get(result, 'name', '')
+        resultName = _get(result, 'name', ''),
+        displayWeaponName = (resultName && weaponName) ? weaponName : '{weapon}',
+        displayResultName = resultName || '{{win / loss}}'
 
     return (
-      <div>
-        {`NPC${num} choose ${weaponName || '{weapon}'} and ${resultName || '{win / loss}'}`}
-      </div>
+      <p>
+        NPC{num} choose <strong>{displayWeaponName}</strong> and <strong>{displayResultName}</strong>
+      </p>
     )
   }
-}
-
-NPC.propTypes = {
-  
 }
 
 export default NPC
