@@ -7,12 +7,12 @@ import { isNumber as _isNumber } from 'lodash'
  *
  * @name getResult
  * @function
+ * @param player0Weapon {Number}
  * @param player1Weapon {Number}
- * @param player2Weapon {Number}
  * @return {Object} results for the two players in object format
  * e.g. {
- *   player1: 1,
- *   player2: 0
+ *   player0: 1,
+ *   player1: 0
  * }
  * definitions: (configs/gameConfigs)
  * 0 => loose, 1 => win, 2 => tie
@@ -22,31 +22,31 @@ const WIN = 1,
       LOOSE = 0,
       TIE = 2
 
-export function getResult (player1Weapon, player2Weapon) {
-  console.log('player1Weapon, player2Weapon', player1Weapon, player2Weapon)
-  if (!_isNumber(player1Weapon) || !_isNumber(player2Weapon))
+export function getResult (player0Weapon, player1Weapon) {
+  console.log('player0Weapon, player1Weapon', player0Weapon, player1Weapon)
+  if (!_isNumber(player0Weapon) || !_isNumber(player1Weapon))
     return {
-      player1: null,
-      player2: null
+      player0: '',
+      player1: ''
     }
-
-  let diff = Math.abs(player1Weapon - player2Weapon),
-      isPlayer2Wins = false,
-      isPlayer1Wins = false
+    console.log('xxxxx')
+  let diff = Math.abs(player0Weapon - player1Weapon),
+      isPlayer1Wins = false,
+      isPlayer0Wins = false
 
   if (diff === 0)
     return {
-      player1: TIE,
-      player2: TIE
+      player0: TIE,
+      player1: TIE
     }
 
-  isPlayer2Wins = (diff % 2 === 0) ? true : false
-  isPlayer1Wins = !isPlayer2Wins
+  isPlayer1Wins = (diff % 2 === 0) ? true : false
+  isPlayer0Wins = !isPlayer1Wins
 
 
   return {
-    player1: isPlayer1Wins ? WIN : LOOSE,
-    player2: isPlayer2Wins ? WIN : LOOSE
+    player0: isPlayer0Wins ? WIN : LOOSE,
+    player1: isPlayer1Wins ? WIN : LOOSE
   }
 }
 
