@@ -7,12 +7,12 @@ class You extends Component {
     let { weapon, result } = this.props,
         weaponName = _get(weapon, 'name', ''),
         resultName = _get(result, 'name', ''),
-        displayWeaponName = weaponName || '{weapon}',
-        displayResultName = resultName || '{win / loss}'
+        displayWeaponName = weaponName.toUpperCase() || '{weapon}',
+        displayResultName = resultName.toUpperCase() || '{win / loss}'
 
     return (
       <p>
-        You choose <strong>{displayWeaponName}</strong> and <strong>{displayResultName}</strong>
+        YOU choose <strong>{displayWeaponName}</strong> and <strong>{displayResultName}</strong>
       </p>
     )
   }

@@ -19,9 +19,9 @@ class Game extends Component {
       <div>
         {
           isGameTypeSelected ? (
-            <ul>
-              <li><Player {...player0} /></li>
-              <li><Player {...player1} /></li>
+            <ul className="options">
+              <li className="options__option"><Player {...player0} /></li>
+              <li className="options__option"><Player {...player1} /></li>
             </ul>
           ) : false
         }

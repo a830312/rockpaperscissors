@@ -7,12 +7,13 @@ class NPC extends Component {
     let { weapon, result, num } = this.props,
         weaponName = _get(weapon, 'name', ''),
         resultName = _get(result, 'name', ''),
-        displayWeaponName = (resultName && weaponName) ? weaponName : '{weapon}',
-        displayResultName = resultName || '{{win / loss}}'
+        displayWeaponName = (resultName && weaponName) ? weaponName.toUpperCase() : '{weapon}',
+        displayResultName = resultName.toUpperCase() || '{{win / loss}}',
+        displayNum = num + 1
 
     return (
       <p>
-        NPC{num} choose <strong>{displayWeaponName}</strong> and <strong>{displayResultName}</strong>
+        NPC{displayNum} choose <strong>{displayWeaponName}</strong> and <strong>{displayResultName}</strong>
       </p>
     )
   }

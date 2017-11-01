@@ -2,13 +2,17 @@
 import gameConfigs from '../configs/gameConfigs'
 import { isNumber as _isNumber } from 'lodash'
 
+const WIN = 1,
+      LOOSE = 0,
+      TIE = 2
+
 /**
  * minus weapons from the two players and return the results
  *
  * @name getResult
  * @function
- * @param player0Weapon {Number}
- * @param player1Weapon {Number}
+ * @param player0Weapon {Number} e.g. 2
+ * @param player1Weapon {Number} e.g. 1
  * @return {Object} results for the two players in object format
  * e.g. {
  *   player0: 1,
@@ -17,10 +21,6 @@ import { isNumber as _isNumber } from 'lodash'
  * definitions: (configs/gameConfigs)
  * 0 => loose, 1 => win, 2 => tie
  */
-
-const WIN = 1,
-      LOOSE = 0,
-      TIE = 2
 
 export function getResult (player0Weapon, player1Weapon) {
 
@@ -49,6 +49,17 @@ export function getResult (player0Weapon, player1Weapon) {
   }
 }
 
+
+/**
+ * generate a random int between min and max
+ *
+ * @name getResult
+ * @function
+ * @param min {Number} e.g. 1
+ * @param max {Number} e.g. 3
+ * @return {Number} 1 - 3
+ * 
+ */
 export function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);

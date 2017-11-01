@@ -33,20 +33,22 @@ class Player extends Component {
 
   render() {
     let { player } = this.props,
-        playerId = _get(player, 'id', '')
+        playerId = _get(player, 'id', ''),
+        isNPC = playerId ? false : true,
+        wording = isNPC ? 'NPC has got a weapon' : 'Please Choose a weapon'
     return (
       <div>
-        <p>Please Choose a weapon</p>
-        <ul>
+        <p>{ wording }</p>
+        <ul className="options">
         {
           weapons.map((w, i) => w ? (
-            <li key={`w-${i}`}>
-              <button value={i}  className="btn" onClick={this._handleWeaponClicked}>{ w }</button>
+            <li key={`w-${i}`} className="options__option weapons__options">
+              <button value={i}  className="btn options__option-btn" onClick={this._handleWeaponClicked}>{ w }</button>
             </li>
           ) : false)
         }
         </ul>
-        { playerId ? <You {...this.props} /> : <NPC {...this.props} /> }
+        { isNPC ? <NPC {...this.props} /> : <You {...this.props} /> }
       </div>
     )
   }
