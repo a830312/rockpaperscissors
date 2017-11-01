@@ -36,7 +36,7 @@ class Player extends Component {
         playerId = _get(player, 'id', '')
     return (
       <div>
-        <p>weapons:</p>
+        <p>Please Choose a weapon:</p>
         <ul>
         { weapons.map((w, i) => w ? (<li key={`w-${i}`}><button value={i} onClick={this._handleWeaponClicked}>{ w }</button></li>) : false) }
         </ul>
@@ -45,8 +45,6 @@ class Player extends Component {
     )
   }
 }
-
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

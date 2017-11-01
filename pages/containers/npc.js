@@ -4,17 +4,13 @@ import { get as _get } from 'lodash'
 
 class NPC extends Component {
   render() {
-    let { weapon, result } = this.props,
+    let { weapon, result, num } = this.props,
         weaponName = _get(weapon, 'name', ''),
         resultName = _get(result, 'name', '')
 
     return (
       <div>
-        <ul>
-          <li>NPC</li>
-          { weaponName && resultName ? <li>{ weaponName }</li> : false }
-          { resultName ? <li>{ resultName }</li> : false }
-        </ul>
+        {`NPC${num} choose ${weaponName || '{weapon}'} and ${resultName || '{win / loss}'}`}
       </div>
     )
   }

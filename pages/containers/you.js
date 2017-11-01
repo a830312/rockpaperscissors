@@ -10,11 +10,7 @@ class You extends Component {
 
     return (
       <div>
-        <ul>
-          <li>You</li>
-          { weaponName ? <li>{ weaponName }</li> : false }
-          { resultName ? <li>{ resultName }</li> : false }
-        </ul>
+        {`You choose ${weaponName || '{weapon}'} and ${resultName || '{win / loss}'}`}
       </div>
     )
   }
