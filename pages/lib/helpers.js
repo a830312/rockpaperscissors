@@ -26,6 +26,23 @@ export function validateWeapon (weaponId, weaponsConfigs = weapons) {
   return isValidWeapon
 }
 
+
+
+/**
+ * return results for game paperSissorStone
+ *
+ * @name getResult
+ * @function
+ * @param p0:player0Weapon  {Number} e.g. 2
+ * @param p1:player1Weapon {Number} e.g. 1
+ * @return {Object} results for the two players in object format
+ * e.g. {
+ *   player0: 1,
+ *   player1: 0
+ * }
+ * definitions: (configs/gameConfigs)
+ * 0 => loose, 1 => win, 2 => tie
+ */
 function paperSissorStone (p0, p1) {
   let metch = resultConfigs.filter((result) => (result.p0 === p0) && (result.p1 === p1))
   return metch[0].result
@@ -38,6 +55,7 @@ function paperSissorStone (p0, p1) {
  * @function
  * @param player0Weapon {Number} e.g. 2
  * @param player1Weapon {Number} e.g. 1
+ * @param weaponsConfigs {Array} e.g. [ '', 'scissors', 'paper', 'rock' ]
  * @return {Object} results for the two players in object format
  * e.g. {
  *   player0: 1,
