@@ -24,43 +24,11 @@ class Player extends Component {
         isNPC = playerId === 0,
         selectedWeapon = parseInt(e.target.value, 10)
 
-    if (isNPC) //is NPC
+    if (isNPC)
       return
 
     updatePlayerWeapon(num, selectedWeapon)
     
-  //   let { player1, player2 } = this.state,
-  //       { type } = this.props,
-  //       { results, players, weapons } = gameConfigs,
-  //       player1Weapon = player1.weapon,
-  //       player2Weapon = e.target.value,
-  //       player2WeaponName = weapons[player2Weapon],
-  //       caculatedResult = {},
-  //       p1CaculatedResult = '',
-  //       p2CaculatedResult = '',
-  //       player1Result = '',
-  //       player2Result = '',
-  //       player1Info = {},
-  //       player2Info = {}
-
-  //   player2Weapon = parseInt(player2Weapon, 10)
-  //   caculatedResult = getResult(player1Weapon, player2Weapon),
-  //   p1CaculatedResult = _get(caculatedResult, 'player1', ''),
-  //   p2CaculatedResult = _get(caculatedResult, 'player2', ''),
-  //   player1Result = _get(results, p1CaculatedResult, ''),
-  //   player2Result = _get(results, p2CaculatedResult, ''),
-  //   player1Info = Object.assign({}, player1, {result: player1Result})
-  //   player2Info = Object.assign({}, player2, {
-  //     weaponName: player2WeaponName,
-  //     weapon: player2Weapon,
-  //     type: players[type],
-  //     result: player2Result
-  //   })
-
-  //   this.setState({
-  //     player1: player1Info,
-  //     player2: player2Info
-  //   })
   }
 
   render() {
@@ -70,7 +38,7 @@ class Player extends Component {
       <div>
         <p>weapons:</p>
         <ul>
-        { weapons.map((w, i) => (<li key={`w-${i}`}><button value={i} onClick={this._handleWeaponClicked}>{ w }</button></li>)) }
+        { weapons.map((w, i) => w ? (<li key={`w-${i}`}><button value={i} onClick={this._handleWeaponClicked}>{ w }</button></li>) : false) }
         </ul>
         { playerId ? <You {...this.props} /> : <NPC {...this.props} /> }
       </div>

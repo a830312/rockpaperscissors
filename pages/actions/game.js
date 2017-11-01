@@ -15,18 +15,17 @@ export const actionTypes = {
 export const updateGameType = (gameType) => dispatch => {
   let isPlayer0NPC = true,
       isPlayer1NPC = gameType === 0
-  return Promise.all([
-    dispatch({
-      type: actionTypes.UPDATE_GAME_TYPE,
-      gameType
-    }),
-    dispatch(initPlayerInfo(0, isPlayer0NPC)),
-    dispatch(initPlayerInfo(1, isPlayer1NPC))
-  ])
+  return Promise.resolve(dispatch(resetGameType()))
+          .then(dispatch({
+            type: actionTypes.UPDATE_GAME_TYPE,
+            gameType
+          }))
+          .then(dispatch(initPlayerInfo(0, isPlayer0NPC)))
+          .then(dispatch(initPlayerInfo(1, isPlayer1NPC)))
     
 }
 
-export const resetGameType = (gameType) => dispatch => {
+export const resetGameType = () => dispatch => {
   return dispatch({
     type: actionTypes.RESET_GAME_TYPE
   })
@@ -39,29 +38,31 @@ export const initStore = (initialState = defaultState) => {
 const getRandomWeaponId = () => {
   let { weapons, players } = gameConfigs,
       lastWeaponId = Math.max(0, weapons.length),
-      randomNum = getRandomInt(0, lastWeaponId)
+      randomNum = getRandomInt(1, lastWeaponId)
 
   return randomNum
 }
 
-export const initPlayerInfo = (playerIndex, isNPC = false) => dispatch => {
-  // let type = isNPC ? 0 : 1,
-  //     { weapons, players } = gameConfigs,
-  //     weaponId = isNPC ? getRandomWeaponId() : '',
-  //     playerInfo = {
-  //       type: _get(players, type, ''),
-  //       weapon: weaponId,
-  //       weaponName: _get(weapons, weaponId, ''),
-  //       result: ''
-  //     }
-  let playerType = isNPC ? 0 : 1,
-      weaponId = isNPC ? getRandomWeaponId() : ''
+export const initPlayerInfo = (playerIndex, isNPC = false) => (dispatch, getState) => {
+  
+  let storeState = getState(),
+      { gameType } = storeState,
+      isNPCVsNPC = gameType === 0,
+      playerType = isNPC ? 0 : 1,
+      weaponId = isNPC ? getRandomWeaponId() : '',
+      todos = [
+        dispatch(updatePlayerInfo(playerIndex, 'PLAYER', playerType)),
+        dispatch(updatePlayerInfo(playerIndex, 'WEAPON', weaponId)),
+        dispatch(updatePlayerInfo(playerIndex, 'RESULT', ''))
+      ]
 
-  return Promise.all([
-    dispatch(updatePlayerInfo(playerIndex, 'PLAYER', playerType)),
-    dispatch(updatePlayerInfo(playerIndex, 'WEAPON', weaponId)),
-    dispatch(updatePlayerInfo(playerIndex, 'RESULT', ''))
-  ])
+  if (isNPCVsNPC)
+    return  Promise.all(todos)
+              .then(dispatch(updateResults()))
+
+  return Promise.all(todos)
+
+
 
 }
 

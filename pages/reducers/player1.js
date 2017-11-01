@@ -20,6 +20,7 @@ const defaultPlayer = {
 function player (state = defaultPlayer, action) {
   let { type, id } = action,
       name = _get(players, id, '')
+  id = parseInt(id, 10)
   switch(type) {
     case 'UPDATE_PLAYER1_PLAYER':
       return {
@@ -36,6 +37,7 @@ function player (state = defaultPlayer, action) {
 function weapon (state = defaultWeapon, action) {
   let { type, id } = action,
       name = _get(weapons, id, '')
+  id = parseInt(id, 10)
   switch(action.type) {
     case 'UPDATE_PLAYER1_WEAPON':
       return {
@@ -52,6 +54,7 @@ function weapon (state = defaultWeapon, action) {
 function result (state = defaultResult, action) {
   let { type, id } = action,
       name = _get(results, id, '')
+  id = parseInt(id, 10)
   switch(action.type) {
     case 'UPDATE_PLAYER1_RESULT':
       return {

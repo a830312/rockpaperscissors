@@ -23,13 +23,12 @@ const WIN = 1,
       TIE = 2
 
 export function getResult (player0Weapon, player1Weapon) {
-  console.log('player0Weapon, player1Weapon', player0Weapon, player1Weapon)
+
   if (!_isNumber(player0Weapon) || !_isNumber(player1Weapon))
     return {
       player0: '',
       player1: ''
     }
-    console.log('xxxxx')
   let diff = Math.abs(player0Weapon - player1Weapon),
       isPlayer1Wins = false,
       isPlayer0Wins = false

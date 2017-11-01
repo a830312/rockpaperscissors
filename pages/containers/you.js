@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { get as _get } from 'lodash'
 
-class Human extends Component {
+class You extends Component {
   render() {
     let { weapon, result } = this.props,
         weaponName = _get(weapon, 'name', ''),
@@ -11,7 +11,7 @@ class Human extends Component {
     return (
       <div>
         <ul>
-          <li>Human</li>
+          <li>You</li>
           { weaponName ? <li>{ weaponName }</li> : false }
           { resultName ? <li>{ resultName }</li> : false }
         </ul>
@@ -20,8 +20,8 @@ class Human extends Component {
   }
 }
 
-Human.propTypes = {
+You.propTypes = {
   
 }
 
-export default Human
+export default You
