@@ -10,11 +10,10 @@
     "url": "git+ssh://git@github.com/gumtreeuk/rockpaperscissors.git"
   },
   "scripts": {
-    "test": "karma start karma.config.js --no-single-run",
+    "test": "jest",
     "dev": "next",
-    "build": "webpack",
-    "serve": "http-server -p 8000 build/",
-    "lint": "eslint . --ext .js"
+    "build": "next build",
+    "start": "next start"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -24,11 +23,14 @@
     "babel-preset-stage-3": "^6.22.0",
     "chai": "^3.5.0",
     "css-loader": "^0.26.2",
+    "enzyme": "^2.8.2",
     "eslint": "^3.17.0",
     "eslint-loader": "^1.3.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^2.19.0",
     "http-server": "^0.9.0",
+    "jest": "^21.0.0",
+    "jest-cli": "^21.2.1",
     "karma": "^1.5.0",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.0.0",
@@ -41,6 +43,8 @@
     "karma-webpack": "^2.0.2",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
+    "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "^16.0.0",
     "sass-loader": "^6.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
@@ -52,16 +56,15 @@
     "url": "https://github.com/gumtreeuk/rockpaperscissors/issues"
   },
   "homepage": "https://github.com/gumtreeuk/rockpaperscissors#readme",
-  "main": "karma.config.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "index.js",
   "keywords": [],
   "author": "",
   "dependencies": {
+    "babel-plugin-module-resolver": "^2.7.1",
     "babel-plugin-wrap-in-js": "^1.1.1",
+    "babel-preset-es2015": "^6.24.1",
     "lodash": "^4.17.4",
-    "next": "^4.1.4",
+    "next": "latest",
     "next-redux-wrapper": "^1.3.4",
     "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^2.0.8",

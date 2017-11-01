@@ -1,10 +1,27 @@
 
 import gameConfigs from '../configs/gameConfigs'
-import { isNumber as _isNumber } from 'lodash'
+import { isNumber as _isNumber, get as _get } from 'lodash'
 
+const { weapons } = gameConfigs
 const WIN = 1,
       LOOSE = 0,
       TIE = 2
+
+/**
+ * check if weaponId exists in current configs
+ *
+ * @name validateWeapon
+ * @function
+ * @param weaponId {Number} e.g. 1
+ * @param weaponsConfigs {Array} e.g. [ '', 'scissors', 'paper', 'rock' ]
+ * @return {Boolean} 
+ * 
+ */
+export function validateWeapon (weaponId, weaponsConfigs = weapons) {
+  let weaponName = _get(weaponsConfigs, weaponId, ''),
+      isValidWeapon = weaponName ? true : false
+  return isValidWeapon
+}
 
 /**
  * minus weapons from the two players and return the results
@@ -21,10 +38,10 @@ const WIN = 1,
  * definitions: (configs/gameConfigs)
  * 0 => loose, 1 => win, 2 => tie
  */
-
-export function getResult (player0Weapon, player1Weapon) {
-
-  if (!_isNumber(player0Weapon) || !_isNumber(player1Weapon))
+export function getResult (player0Weapon, player1Weapon, weaponsConfigs = weapons) {
+  if (!_isNumber(player0Weapon) || !_isNumber(player1Weapon) 
+    || !validateWeapon(player0Weapon, weaponsConfigs)
+    || !validateWeapon(player1Weapon, weaponsConfigs))
     return {
       player0: '',
       player1: ''
@@ -61,7 +78,10 @@ export function getResult (player0Weapon, player1Weapon) {
  * 
  */
 export function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  if (!_isNumber(min) || !_isNumber(max) || min > max)
+    return 0
+
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min)) + min //The maximum is exclusive and the minimum is inclusive
 }
