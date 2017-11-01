@@ -39,10 +39,10 @@ class Player extends Component {
     return (
       <div>
         <p className="wording">{ wording }</p>
-        <ul className="options">
+        <ul className="weapons">
         {
           weapons.map((w, i) => w ? (
-            <li key={`w-${i}`} className="options__option weapons__options">
+            <li key={`w-${i}`} className="weapons__options">
               <button value={i}
                 disabled={isNPC}
                 className="btn options__option-btn"
